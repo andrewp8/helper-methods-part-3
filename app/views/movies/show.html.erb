@@ -1,5 +1,5 @@
 <div class="cardBox">
-  <div class="card" style="width: 18rem;">
+  <div class="card customCard" style="width: 18rem;">
     <img src="<%= @movie.image_url %>" class="card-img-top">
     <div class="card-body">
       <h5 class="card-title">Movie #<%= @movie.id %> details</h5>
@@ -10,25 +10,20 @@
       <div class="content">
         <ul>
           <li class="list-group-item"><i>Title</i><%= @movie.title %></li>
-          <li class="list-group-item"><i>Description:</i><%= @movie.description %></li>
+          <li class="list-group-item"><i>Description: </i><%= @movie.description %></li>
           <li class="list-group-item"><i>Updated at: </i><%= time_ago_in_words(@movie.updated_at) %> ago</li>
-          <li class="list-group-item"><%= time_ago_in_words(@movie.created_at) %> ago</li>
+          <li class="list-group-item"><i>Created at:</i><%= time_ago_in_words(@movie.created_at) %> ago</li>
         </ul>
       </div>
-      <!-- <li class="list-group-item"><span class="custom-text retroshadow">Title</span> <%#= @movie.title %></li>
-      <li class="list-group-item"><span class="custom-text retroshadow">Description</span> <%#= @movie.description %></li>
-      <li class="list-group-item"><span class="custom-text retroshadow">Updated at</span> <%#= time_ago_in_words(@movie.updated_at) %> ago</li>
-      <li class="list-group-item"><span class="custom-text retroshadow">Created at</span> <%#= time_ago_in_words(@movie.created_at) %> ago</li>-->
     </ul>
-    <div class="card-body d-flex justify-content-around">
+    <div class="card-body d-flex justify-content-between">
       <button class="btn custom-btn btn-3">
-        <i class="fa fa-pencil" aria-hidden="true"></i>
-        <%= link_to "Edit Movie", edit_movie_path(@movie), class: "link" %>
+        <i class="fa fa-pencil" aria-hidden="true"></i> Edit Movie
+        <%= link_to "", edit_movie_path(@movie)%>
       </button>
       <button class="btn custom-btn btn-8">
-        <i class='fa-regular fa-trash-can' aria-hidden="true"></i>
-        <%= link_to @movie, data: { turbo_method: :delete }, class: "link" do%>
-        <% end  %>
+        <i class='fa-regular fa-trash-can' aria-hidden="true"></i> Delete Movie
+        <%= link_to "",@movie, data: { turbo_method: :delete }%>
       </button>
     </div>
   </div>

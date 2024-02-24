@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_23_233805) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_24_030748) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "directors", force: :cascade do |t|
+    t.string "name"
+    t.date "dob"
+    t.text "bio"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "movies", force: :cascade do |t|
     t.string "title"
@@ -20,6 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_23_233805) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_url", default: "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmticzdjNnkya3YwaWxzbjNweWZ6M2R5aDBua3o3dWI0anl6a2Z2eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QUKqSLmE7vmZP2PkZk/giphy.gif"
+    t.date "released_on"
   end
 
   create_table "users", force: :cascade do |t|

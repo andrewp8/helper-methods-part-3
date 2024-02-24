@@ -1,0 +1,33 @@
+<!-- 
+Note that we could have still used @movie in this partial, because instance variables that are defined in the actions will be available in the partial, and the instance variable is the same in both actions using this form. But if the name was different in the two actions (e.g., @the_movie vs. @new_movie), then we would want to use :locals as we do in the example.
+-->
+
+<% movie.errors.full_messages.each do |message| %>
+  <p style="color: red;"><%= message %></p>
+<% end %>
+
+<%= form_with(model: movie, data: { turbo: :false }) do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+  
+  <div>
+    <%= form.label :image_url %>
+    <%= form.text_field :image_url %>
+  </div>
+
+  <div>
+    <%= form.label :released_on %>
+    <%= form.date_select :released_on %>
+  </div>
+  
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
