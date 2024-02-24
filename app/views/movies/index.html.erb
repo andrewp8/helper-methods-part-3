@@ -1,65 +1,66 @@
-<h1>
-  List of all movies
-</h1>
+<div class="container mt-3">
+  <div>
+    <%= link_to "Add a new movie", new_movie_path, class:"custom-btn btn-3" %>
+  </div>
 
-<hr>
+  <hr>
+
+  <table class="table table-dark table-stripd">
+    <tr>
+      <th>
+        ID
+      </th>
+
+      <th>
+        Title
+      </th>
+
+      <th>
+        Description
+      </th>
+
+      <th>
+        Created at
+      </th>
+
+      <th>
+        Updated at
+      </th>
+
+      <th>
+      </th>
+    </tr>
+
+    <% @movies.each do |movie| %>
+      <tr>
+        <td>
+          <%= movie.id %>
+        </td>
+
+        <td>
+          <%= movie.title %>
+        </td>
+
+        <td>
+          <%= movie.description %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(movie.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(movie.updated_at) %> ago
+        </td>
+
+        <td>
+          <%= link_to "Show details", movie, class: "custom-btn btn-1" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
 
 <div>
-  <%= link_to "Add a new movie", new_movie_path %>
+  <%= render partial: "/test" %>
 </div>
-
-<hr>
-
-<table>
-  <tr>
-    <th>
-      ID
-    </th>
-
-    <th>
-      Title
-    </th>
-
-    <th>
-      Description
-    </th>
-
-    <th>
-      Created at
-    </th>
-
-    <th>
-      Updated at
-    </th>
-
-    <th>
-    </th>
-  </tr>
-
-  <% @movies.each do |movie| %>
-  <tr>
-    <td>
-      <%= movie.id %>
-    </td>
-
-    <td>
-      <%= movie.title %>
-    </td>
-
-    <td>
-      <%= movie.description %>
-    </td>
-
-    <td>
-      <%= time_ago_in_words(movie.created_at) %> ago
-    </td>
-    <td>
-      <%= time_ago_in_words(movie.updated_at) %> ago
-    </td>
-
-    <td>
-      <%= link_to "Show details", movie %>
-    </td>
-  </tr>
-  <% end %>
-</table>
+</div>
